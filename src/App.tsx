@@ -1,390 +1,59 @@
-import { Card } from "@chakra-ui/react"
-import { Avatar } from "./components/ui/avatar"
+import React from 'react'
+import { Card } from '@chakra-ui/react'
+import { Avatar } from './components/ui/avatar'
+
+const characters = [
+  { id: 1, name: "Rick Sanchez", species: "Human", status: "Alive" },
+  { id: 2, name: "Morty Smith", species: "Human", status: "Alive" },
+  { id: 3, name: "Summer Smith", species: "Human", status: "Alive" },
+  { id: 4, name: "Beth Smith", species: "Human", status: "Alive" },
+  { id: 5, name: "Jerry Smith", species: "Human", status: "Alive" },
+  { id: 6, name: "Abadango Cluster Princess", species: "Alien", status: "Alive" },
+  { id: 7, name: "Abradolf Lincler", species: "Human", status: "Unknown" },
+  { id: 8, name: "Adjudicator Rick", species: "Human", status: "Dead" },
+  { id: 9, name: "Agency Director", species: "Human", status: "Dead" },
+  { id: 10, name: "Alan Rails", species: "Human", status: "Dead" },
+  { id: 11, name: "Albert Einstein", species: "Human", status: "Dead" },
+  { id: 12, name: "Alexander", species: "Human", status: "Dead" },
+  { id: 13, name: "Alien Googah", species: "Alien", status: "Unknown" },
+  { id: 14, name: "Alien Morty", species: "Alien", status: "Unknown" },
+  { id: 15, name: "Alien Rick", species: "Alien", status: "Unknown" },
+  { id: 16, name: "Amish Cyborg", species: "Alien", status: "Dead" },
+  { id: 17, name: "Annie", species: "Human", status: "Alive" },
+  { id: 18, name: "Antenna Morty", species: "Human", status: "Alive" },
+  { id: 19, name: "Antenna Rick", species: "Human", status: "Unknown" },
+  { id: 20, name: "Ants in my Eyes Johnson", species: "Human", status: "Unknown" },
+]
+
+const CharacterCard = ({id, name, species, status}) => (
+  <Card.Root width="520px" margin="30px">
+      <Card.Body gap="2">
+        <Avatar
+          boxSize="200px"
+          marginLeft="130px"
+          src={`https://rickandmortyapi.com/api/character/avatar/${id}.jpeg`}
+          
+        />
+        <Card.Title mt="2" textAlign='center' fontSize='23px' fontWeight='semibold'>{name}</Card.Title>
+        <Card.Description color='white' fontSize='17px' textAlign="center">
+          Species: {species}
+          <br />
+          Status: {status}
+        </Card.Description>
+      </Card.Body>
+    </Card.Root>
+)
 
 const App = () => {
   return (
     <div>
-
-        <h1 className="text-white text-center font-semibold" >Rick and Morty Characters</h1>
-
-    <div className="flex max-w-[1800px]">
-      <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Rick Sanchez</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Human
-          <br />
-          Status: Alive
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/2.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Morty Smith</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Human
-          <br />
-          Status: Alive
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/3.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Summer Smith</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Human
-          <br />
-          Status: Alive
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
+      <h1 className='text-center text-white font-semibold'>Rick and Morty characters</h1>
+      <div className='max-w-[1800px] flex flex-wrap justify-center'>
+        {characters.map((character) => (
+            <CharacterCard key={character.id} {...character}/>
+        ))}
+      </div>
     </div>
-
-    <div className="flex max-w-[1800px]">
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/4.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Beth Smith</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Human
-          <br />
-          Status: Alive
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/5.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Jerry Smith</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Human
-          <br />
-          Status: Alive
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/6.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Abadango Cluster Princess</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Alien
-          <br />
-          Status: Alien
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-    </div>
-
-
-    <div className="flex max-w-[1800px]">
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/7.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Abradolf Lincler</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Human
-          <br />
-          Status: unknown
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/8.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Adjudicator Rick</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Human
-          <br />
-          Status: Dead
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/9.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Agency Director</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Human
-          <br />
-          Status: Dead
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-    </div>
-
-
-    <div className="flex max-w-[1800px]">
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/10.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Alan Rails</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Human
-          <br />
-          Status: Dead
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/11.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Albert Einstein</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Human
-          <br />
-          Status: Dead
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/12.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Alexander</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Human
-          <br />
-          Status: Dead
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-    </div>
-
-
-    <div className="flex max-w-[1800px]">
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/13.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Alien Googah</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Alien
-          <br />
-          Status: unknown
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/14.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Alien Morty</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Alien
-          <br />
-          Status: unknown
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/15.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Alien Rick</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Alien
-          <br />
-          Status: unknown
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-    </div>
-
-
-    <div className="flex max-w-[1800px]">
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/16.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Amish Cyborg</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Alien
-          <br />
-          Status: Dead
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/17.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Annie</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Human
-          <br />
-          Status: Alive
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/18.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Antenna Morty</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Human
-          <br />
-          Status: Alive
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-    </div>
-
-
-    <div className="flex max-w-[1800px]">
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/19.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Antenna Rick</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Human
-          <br />
-          Status: unknown
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-    <Card.Root width="520px" margin={"30px"} >
-      <Card.Body gap="2">
-        <Avatar
-          boxSize={"200px"}
-          marginLeft={"134px"}
-          src="https://rickandmortyapi.com/api/character/avatar/20.jpeg"
-          name="Nue Camp"
-        />
-        <Card.Title mt="2" textAlign={"center"} fontSize={"25px"}>Ants in my Eyes Johnson</Card.Title>
-        <Card.Description color={"white"} textAlign={"center"} fontSize={"17px"}>
-          Species: Human
-          <br />
-          Status: unknown
-        </Card.Description>
-      </Card.Body>
-    </Card.Root>
-
-    </div>
-
-    
-
-    </div>
-
-
   )
 }
 
